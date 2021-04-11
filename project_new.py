@@ -61,7 +61,6 @@ for root_cat in root_cats:
 # %%
 from implementation import combine_same_columns
 from implementation import filter_columns_SEQN
-from implementation import combine_same_columns
 
 # Filters df for each YEAR by SEQN, common columns, and % of NaN values
 root_cats = ['Demographics data', 'Dietary data', 'Examination data', 'Laboratory data', 'Questionnaire data']
