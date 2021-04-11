@@ -4,6 +4,8 @@ import numpy as np
 import os
 from pathlib import Path
 
+root_loc = os.path.abspath("..") # '/home/alicia_mathew/project'
+
 def locate_xpt_files(loc):
     # Takes a folder and returns .xpt files located anywhere
     # within this folder and its subfolders
@@ -20,14 +22,14 @@ def find_common_columns(years, root_cat):
     # and outputs a (potentially) condensed list of columns from that 
     # root category 
     assert(len(years) != 0)
-    root_loc = '/mnt/c/Users/alicia.mathew/Desktop/Project/NHANES data'
-    
+    #root_loc = '/mnt/c/Users/alicia.mathew/Desktop/Project/NHANES data'
+
     # Dict of years that stores unique list of columns present in those years
     dict_of_columns = {}
 
     for year in years:
-        data_dir = os.path.join(root_loc, 'NHANES '+year, root_cat)
-
+        data_dir = os.path.join(root_loc, 'diabetes_project/datasets', 'NHANES '+year, root_cat)
+        
         # Get a list of XPT files from data_dir
         xpt_list = locate_xpt_files(data_dir)
 
@@ -65,11 +67,11 @@ def intersection(list1, list2):
 
 def dict_SEQN(years, root_cat):
     # Returns a dict of SEQN and stores a list of years that SEQN appears in 
-    root_loc = '/mnt/c/Users/alicia.mathew/Desktop/Project/NHANES data'
+    #root_loc = '/mnt/c/Users/alicia.mathew/Desktop/Project/NHANES data'
     dict_of_SEQN_list = {}
 
     for year in years:
-        data_dir = os.path.join(root_loc, 'NHANES '+year, root_cat)
+        data_dir = os.path.join(root_loc, 'diabetes_project/datasets', 'NHANES '+year, root_cat)
 
         # Get a list of XPT files from data_dir
         xpt_list = locate_xpt_files(data_dir)
@@ -157,13 +159,13 @@ def filter_columns_SEQN(root_cats, year, threshold, filtered_SEQN, columns_dict)
     # for the % of NaN values in a column and returns a df with columns 
     # from all root cats with a % of NaN values less than the threshold
     # and filters SEQN 
-    root_loc = '/mnt/c/Users/alicia.mathew/Desktop/Project/NHANES data'
+    #root_loc = '/mnt/c/Users/alicia.mathew/Desktop/Project/NHANES data'
 
     # Empty Df for year to store all data
     year_df = pd.DataFrame({'SEQN': []})
 
     for root_cat in root_cats:
-        data_dir = os.path.join(root_loc, 'NHANES '+year, root_cat) 
+        data_dir = os.path.join(root_loc, 'diabetes_project/datasets', 'NHANES '+year, root_cat)
 
         # Empty Df for root_cat to store all data
         root_cat_df = pd.DataFrame({'SEQN': []})
