@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import os
 from implementation import locate_xpt_files
-from implementation import intersection
 from implementation import dict_SEQN
 
 years = ['1999-2000','2001-2002','2003-2004','2005-2006','2007-2008','2009-2010',\
