@@ -7,8 +7,7 @@ This project is based on the paper _**'A data-driven approach to predicting diab
 ### Source: NHANES
 The datasets used by the paper mentioned above, as well as in this project, were taken directly from the NHANES (National Health and Nutrition Examination Survey) under the Centers for Disease Control and Prevention (https://www.cdc.gov/) in the United States. This is an exhaustive study done over various year brackets and include patient data in the following categories; Demograpahic, Dietary, Examination, Laboratory, and Questionnaire. 
 
-### Fetching NHANES data
-### Storing NHANES data
+### Fetching and Storing NHANES data
 The steps to obtain raw data were as follows:
 1. From https://www.cdc.gov/nchs/nhanes/index.htm, click on _'Questionnaires, Datasets, and Related Documentation'_
 2. From the side bar, start by clicking on 'NHANES 1999-2000'
