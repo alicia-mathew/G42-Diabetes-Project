@@ -31,6 +31,8 @@ The steps followed to create dataframes for each data file were as follows:
 7. A master dataframe was then created using the first occurrence of each patient in each complete dataframe for each year bracket. This only keeps patients whose diabetes outcome label can be classified using the same criteria as the paper. This criteria requires the patient to be _over the age of 19_ **and** a _male or a non-pregnant female_.
 8. Used this master dataframe to create two dataframes to use in two approaches to this project.
 
+This is done by running the **main.py** file one time and saving the dataframes created.
+
 ### Data-driven Approach
 For this first approach, the columns of the master dataframe were filtered even further using a maximum threshold of **0.5** for the percentage of NaN values present in each column. All columns with a percentage of NaN values greater than 0.5 were dropped from the master dataframe. The aim of this approach was to use as little domain knowledge as possible when it came to identifying the most relevant feature columns to keep and which ones to drop. Only columns that were redundant, repetitive, or unnecessary were removed. 
 
