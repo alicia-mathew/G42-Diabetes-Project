@@ -68,10 +68,10 @@ This follows the same steps as the Random Forest Classifier did.
 The best model is the pipeline with the highest ROC AUC score. 
 Running the file:
 
-### Domain-driven Approach
+## Domain-driven Approach
 In this approach, the master dataframe was filtered using a maximum threshold of **0.55** for the percentage of NaN values present in each column. This led to the inclusion of a number of more "relevant" columns as well as a lot of extra columns deemed "irrelevant" being dropped. Feature engineering was also used in this approach to combine multiple feature columns under the same group to create more conclusive dummy feature columns. 
 
-#### Preparing Dataframe for Machine Learning
+### Preparing Dataframe for Machine Learning
 Running the file:
 
 ### Machine Learning
