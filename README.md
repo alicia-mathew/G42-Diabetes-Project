@@ -29,19 +29,37 @@ The steps followed to create dataframes for each data file were as follows:
 5. For each year bracket (1999-2000, 2001-2002, ..., 2017-2018), two separate dataframes were created with data on patients' prescription medications and dietary supplements. 
 6. These dataframes were then merged with the main dataframe for each year bracket, creating a "complete dataframe" for each year bracket.
 7. A master dataframe was then created using the first occurrence of each patient in each complete dataframe for each year bracket. This only keeps patients whose diabetes outcome label can be classified using the same criteria as the paper. This criteria requires the patient to be _over the age of 19_ **and** a _male or a non-pregnant female_.
-8. Used this master dataframe to create two dataframes to use in two approaches to this project.
+8. Used this master dataframe to create two dataframes to use in two approaches to this project; 1) Data-driven approach 2) Domain-driven approach
 
-This is done by running the **main.py** file one time and saving the dataframes created.
+This is done by running the **main.py** file one time and saving the dataframes created. (uses **implementation_final.py** to run)
 
 ### Data-driven Approach
 For this first approach, the columns of the master dataframe were filtered even further using a maximum threshold of **0.5** for the percentage of NaN values present in each column. All columns with a percentage of NaN values greater than 0.5 were dropped from the master dataframe. The aim of this approach was to use as little domain knowledge as possible when it came to identifying the most relevant feature columns to keep and which ones to drop. Only columns that were redundant, repetitive, or unnecessary were removed. 
 
+#### Preprocessing Dataframe for Machine Learning
+1. Cleans dataframe, only keeps relevant columns.
+2. Sorts columns based on whether they contain continuous, categorical, mixed, or object data.
+4. Assigns diabetes class labels
+5. Restricts dataset to patients from 1999-2014 year brackets (just like the paper did).
+6. Drops columns not considered features to classify diabetes.
+7. Separates predictors, X, and labels, y, which are used to train ML models.
+
+This is done by running the **_1_prep_for_ML.py** file 
+
+8. Create four machine learning transformation pipelines to test which performs better on dataset
+ 
+
+#### Machine Learning
+1. 
+
+
 ### Domain-driven Approach
 In this approach, the master dataframe was filtered using a maximum threshold of **0.55** for the percentage of NaN values present in each column. This led to the inclusion of a number of more "relevant" columns as well as a lot of extra columns deemed "irrelevant" being dropped. Feature engineering was also used in this approach to combine multiple feature columns under the same group to create more conclusive dummy feature columns. 
 
-## Preprocessing Dataframe for Machine Learning
+#### Preprocessing Dataframe for Machine Learning
+This is done i
 
-## Machine Learning
+#### Machine Learning
 
 ## Backlog
 
