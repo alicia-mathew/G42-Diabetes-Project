@@ -44,7 +44,7 @@ For this first approach, the columns of the master dataframe were filtered even 
 Run the _**_1_prep_for_ML.py**_ file. This does the following:
 1. Clean dataframe, only keep relevant columns.
 2. Sort columns based on whether they contain continuous, categorical, mixed, or object data.
-3. Assign diabetes class labels
+3. Assign diabetes class labels (not diabetic - 0 | diabetic - 1 | prediabetic - 2)
 4. Restrict dataset to patients from 1999-2014 year brackets (just like the paper did).
 5. Drop columns not considered features to classify diabetes.
 6. Separate predictors, X, and labels, y, which are used to train ML models.
@@ -80,7 +80,7 @@ Run the _**_7_domain_integrated_prep_for_ML.py**_ file. This does the following:
 1. Clean the dataframe. Only columns that were deemed relevant to the classification of diabetes were kept. 
 2. Perform feature engineering to reduce the number of feature columns in the dataframe by grouping columns under the same category into one combined dummy feature.
 3. Sort columns based on whether they contain continuous, categorical, mixed, or object data.
-4. Assign diabetes class labels
+4. Assign diabetes class labels (not diabetic - 0 | diabetic - 1 | prediabetic - 2)
 5. Restrict dataset to patients from 1999-2014 year brackets (just like the paper did).
 6. Drop columns not considered features to classify diabetes.
 7. Separate predictors, X, and labels, y, which are used to train ML models.
@@ -99,4 +99,3 @@ Run the _**_12_best_model_domain_integrated.py**_ file. This follows the same st
 
 ## Access to Models
 ## Diagram of Models
-
