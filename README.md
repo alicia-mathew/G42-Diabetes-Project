@@ -96,6 +96,9 @@ Run the _**_11_domain_integrated_test_best_xgb_pipeline_grid_search.py**_ file. 
 Run the _**_12_best_model_domain_integrated.py**_ file. This follows the same steps as the Data-driven approach.
 
 ## Backlog
+- Play around with values for the maximum percentage of NaN value threshold when filtering columns in the master dataframe and investigate whether adding more or less features would improve model performance.
+- Play around with various other transformation pipelines - using different methods of imputation.
+- Change the goal of the project to classifying cardiovascular disease.
 
 ## Access to Models
 ## Diagram of Models
