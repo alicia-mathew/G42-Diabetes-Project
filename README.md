@@ -31,7 +31,7 @@ The steps followed to create dataframes for each data file were as follows:
 7. A master dataframe was then created using the first occurrence of each patient in each complete dataframe for each year bracket. This only keeps patients whose diabetes outcome label can be classified using the same criteria as the paper. This criteria requires the patient to be _over the age of 19_ **and** a _male or a non-pregnant female_.
 8. Used this master dataframe to create two dataframes to use in two approaches to this project; 1) Data-driven approach 2) Domain-driven approach
 
-This is done by running the **main.py** file one time and saving the dataframes created. (uses **implementation_final.py** to run)
+This is done by running the _**main.py**_ file one time and saving the dataframes created. (uses _**implementation_final.py**_ to run)
 
 ## Preprocessing Dataframe for Machine Learning using Transformation Pipelines
 Create four machine learning transformation pipelines to test which performs better on dataset. A brief overview is shown below.
@@ -41,9 +41,45 @@ Create four machine learning transformation pipelines to test which performs bet
 For this first approach, the columns of the master dataframe were filtered even further using a maximum threshold of **0.5** for the percentage of NaN values present in each column. All columns with a percentage of NaN values greater than 0.5 were dropped from the master dataframe. The aim of this approach was to use as little domain knowledge as possible when it came to identifying the most relevant feature columns to keep and which ones to drop. Only columns that were redundant, repetitive, or unnecessary were removed. 
 
 ### Preparing Dataframe for Machine Learning
-Running the  **_1_prep_for_ML.py** file:
+Run the _**_1_prep_for_ML.py**_ file. This does the following:
 1. Clean dataframe, only keep relevant columns.
 2. Sort columns based on whether they contain continuous, categorical, mixed, or object data.
+3. Assign diabetes class labels
+4. Restrict dataset to patients from 1999-2014 year brackets (just like the paper did).
+5. Drop columns not considered features to classify diabetes.
+6. Separate predictors, X, and labels, y, which are used to train ML models.
+
+### Machine Learning
+#### Random Forest Classifier
+Run the _**_3_test_best_rfc_pipeline_grid_search.py**_ file. This does the following:
+1. Use each transformation pipeline above to fit and transform X. 
+2. Fit baseline Random Forest Classifier (RFC) to the tranformed X and y.
+3. Evaluate using 5-fold cross validation.
+4. Calculate and compare mean cross validation scores and ROC AUC scores.
+5. The pipeline which results in the highest ROC AUC score is stored as the best RFC transformation pipeline and will be used in grid search.
+6. Calculate and compare mean cross validation scores and ROC AUC score once again.
+
+#### XGBoost Classifier
+Run the _**_5_test_best_xgb_pipeline_grid_search.py**_ file. This follows the same steps as the Random Forest Classifier did except the XGB Classifier was used.
+
+#### Best model
+Run the _**_6_best_model_data_driven.py**_ file. This does the following: 
+
+The best model is selected as the algorithm that resulted in the highest ROC AUC score. In this data-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, the process is done one final time. 
+1. Use best XGB transformation pipeline to fit and transform X.
+2. Fit best model to the transformed X and y.
+3. Evaluate using 5-fold cross validation.
+4. Calculate and compare mean cross validation scores and ROC AUC score.
+5. Identify the top 20 features used in classification.
+
+## Domain-driven Approach
+In this approach, the master dataframe was filtered using a maximum threshold of **0.55** for the percentage of NaN values present in each column. This led to the inclusion of a number of more "relevant" columns as well as a lot of extra columns deemed "irrelevant" being dropped. Feature engineering was also used in this approach to combine multiple feature columns under the same group to create more conclusive dummy feature columns. 
+
+### Preparing Dataframe for Machine Learning
+Run the _**_7_domain_integrated_prep_for_ML.py**_ file. This does the following:
+1. Clean the dataframe. Only columns that were deemed relevant to the classification of diabetes were kept. 
+2. Perform feature engineering to reduce the number of feature columns in the dataframe by grouping columns under the same category into one combined dummy feature.
+3. Sort columns based on whether they contain continuous, categorical, mixed, or object data.
 4. Assign diabetes class labels
 5. Restrict dataset to patients from 1999-2014 year brackets (just like the paper did).
 6. Drop columns not considered features to classify diabetes.
@@ -51,39 +87,13 @@ Running the  **_1_prep_for_ML.py** file:
 
 ### Machine Learning
 #### Random Forest Classifier
-Running the **_3_test_best_rfc_pipeline_grid_search.py** file:
-1. Use each transformation pipeline above to fit and transform X 
-2. Fit baseline Random Forest Classifier (RFC) to X and y
-3. Evaluate using 5-fold cross validation
-4. Calculate and compare mean cross validation scores and ROC AUC score.
-5. The pipeline which results in the highest ROC AUC score is stored as the best RFC transformation pipeline and will be used in grid search.
-6. Calculate and compare mean cross validation scores and ROC AUC score once again.
+Run the _**_9_domain_integrated_test_best_rfc_pipeline_grid_search.py**_ file. This follows the same steps as the Data-driven approach.
 
 #### XGBoost Classifier
-Running the **_5_test_best_xgb_pipeline_grid_search.py** file:
-
-This follows the same steps as the Random Forest Classifier did.
+Run the _**_11_domain_integrated_test_best_xgb_pipeline_grid_search.py**_ file. This follows the same steps as the Data-driven approach.
 
 #### Best model
-The best model is the pipeline with the highest ROC AUC score. 
-Running the file:
-
-## Domain-driven Approach
-In this approach, the master dataframe was filtered using a maximum threshold of **0.55** for the percentage of NaN values present in each column. This led to the inclusion of a number of more "relevant" columns as well as a lot of extra columns deemed "irrelevant" being dropped. Feature engineering was also used in this approach to combine multiple feature columns under the same group to create more conclusive dummy feature columns. 
-
-### Preparing Dataframe for Machine Learning
-Running the file:
-
-### Machine Learning
-#### Random Forest Classifier
-Running the file:
-
-#### XGBoost Classifier
-Running the file:
-
-#### Best model
-The best model is the pipeline with the highest ROC AUC score. 
-Running the file:
+Run the _**_12_best_model_domain_integrated.py**_ file. This follows the same steps as the Data-driven approach.
 
 ## Backlog
 
