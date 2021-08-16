@@ -99,6 +99,3 @@ Run the _**_12_best_model_domain_integrated.py**_ file. This follows the same st
 - Play around with values for the maximum percentage of NaN value threshold when filtering columns in the master dataframe and investigate whether adding more or less features would improve model performance.
 - Play around with various other transformation pipelines - using different methods of imputation.
 - Change the goal of the project to classifying cardiovascular disease.
-
-## Access to Models
-## Diagram of Models
