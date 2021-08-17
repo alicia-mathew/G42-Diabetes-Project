@@ -97,6 +97,6 @@ The table below shows the ROC AUC score of the BMC paper's best-performing model
 
 ## Backlog
 - Play around with values for the maximum percentage of NaN value threshold when filtering columns in the master dataframe and investigate whether adding more or less features would improve model performance.
-- Play around with various other transformation pipelines - using different methods of imputation.
+- Play around with various other transformation pipelines - using different methods of imputation (MICE - correlated categorical features). Imputation is most probably the biggest reason for the difference in performance between the models in this project and the BMC paper. The paper doesn't mention the methods used to impute missing values.
 - Perform multiple Grid Searches with RFC and XGB and test different hyperparameter values.
 - Change the goal of the project to classifying cardiovascular disease.
