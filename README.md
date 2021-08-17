@@ -77,7 +77,15 @@ In this approach, the master dataframe was filtered using a maximum threshold of
 The same steps were followed as in the Data-driven approach.
 
 #### Best model
-The best model is selected as the classifier that resulted in the highest ROC AUC score. In this data-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, using the XGBoost feature importance method, the top 20 features used in classification were identified.
+The best model is selected as the classifier that resulted in the highest ROC AUC score. In this domain-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, using the XGBoost feature importance method, the top 20 features used in classification were identified.
+
+### Comparing Results to BMB Paper's Results
+The table below shows the ROC AUC score of the BMC paper's best-performing model, the XGBoost Classifier, using lab data (taken from Page 7 in the paper) as well as the ROC AUC score of the best model in the Data-driven approach of this project.
+
+|                       | ROC AUC score |
+| --------------------- | ------------- |
+| **Project best model**    |    0.944      |
+| **BMC Paper best model**  |    0.957      |
 
 ## Diagram of Flow of Python files
 ![G42-Diabetes-project-github-project-flow-chart](https://user-images.githubusercontent.com/76870222/129685915-170b2bdd-831d-4056-9aea-e63ea9637931.jpg)
