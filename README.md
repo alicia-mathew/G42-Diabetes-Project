@@ -41,7 +41,6 @@ Create four machine learning transformation pipelines to test which performs bet
 For this first approach, the columns of the master dataframe were filtered even further using a maximum threshold of **0.5** for the percentage of NaN values present in each column. All columns with a percentage of NaN values greater than 0.5 were dropped from the master dataframe. The aim of this approach was to use as little domain knowledge as possible when it came to identifying the most relevant feature columns to keep and which ones to drop. Only columns that were redundant, repetitive, or unnecessary were removed. 
 
 ### Preparing Dataframe for Machine Learning
-Run the _**_1_prep_for_ML.py**_ file. This does the following:
 1. Clean dataframe, only keep relevant columns.
 2. Sort columns based on whether they contain continuous, categorical, mixed, or object data.
 3. Assign diabetes class labels (not diabetic - 0 | diabetic - 1 | prediabetic - 2)
@@ -50,33 +49,22 @@ Run the _**_1_prep_for_ML.py**_ file. This does the following:
 6. Separate predictors, X, and labels, y, which are used to train ML models.
 
 ### Machine Learning
-#### Random Forest Classifier
-Run the _**_3_test_best_rfc_pipeline_grid_search.py**_ file. This does the following:
+Two machine learning classifiers were used in this project - **Random Forest Classifier** (RFC) and **XGBoost** (Extreme Gradient Boosting) **Classifier** (XGB). For each classifer, the following was done:
+
 1. Use each transformation pipeline above to fit and transform X. 
-2. Fit baseline Random Forest Classifier (RFC) to the tranformed X and y.
+2. Fit a baseline classifier to the tranformed X and y.
 3. Evaluate using 5-fold cross validation.
 4. Calculate and compare mean cross validation scores and ROC AUC scores.
-5. The pipeline which results in the highest ROC AUC score is stored as the best RFC transformation pipeline and will be used in grid search.
+5. The pipeline which results in the highest ROC AUC score is stored as the best transformation pipeline for that classfier and will be used in grid search.
 6. Calculate and compare mean cross validation scores and ROC AUC score once again.
 
-#### XGBoost Classifier
-Run the _**_5_test_best_xgb_pipeline_grid_search.py**_ file. This follows the same steps as the Random Forest Classifier did except the XGB Classifier was used.
-
 #### Best model
-Run the _**_6_best_model_data_driven.py**_ file. This does the following: 
-
-The best model is selected as the algorithm that resulted in the highest ROC AUC score. In this data-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, the process is done one final time. 
-1. Use best XGB transformation pipeline to fit and transform X.
-2. Fit best model to the transformed X and y.
-3. Evaluate using 5-fold cross validation.
-4. Calculate and compare mean cross validation scores and ROC AUC score.
-5. Identify the top 20 features used in classification.
+The best model is selected as the classifier that resulted in the highest ROC AUC score. In this data-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, using the XGBoost feature importance method, the top 20 features used in classification were identified.
 
 ## Domain-driven Approach
 In this approach, the master dataframe was filtered using a maximum threshold of **0.55** for the percentage of NaN values present in each column. This led to the inclusion of a number of more "relevant" columns as well as a lot of extra columns deemed "irrelevant" being dropped. Feature engineering was also used in this approach to combine multiple feature columns under the same group to create more conclusive dummy feature columns. 
 
 ### Preparing Dataframe for Machine Learning
-Run the _**_7_domain_integrated_prep_for_ML.py**_ file. This does the following:
 1. Clean the dataframe. Only columns that were deemed relevant to the classification of diabetes were kept. 
 2. Perform feature engineering to reduce the number of feature columns in the dataframe by grouping columns under the same category into one combined dummy feature.
 3. Sort columns based on whether they contain continuous, categorical, mixed, or object data.
@@ -86,16 +74,19 @@ Run the _**_7_domain_integrated_prep_for_ML.py**_ file. This does the following:
 7. Separate predictors, X, and labels, y, which are used to train ML models.
 
 ### Machine Learning
-#### Random Forest Classifier
-Run the _**_9_domain_integrated_test_best_rfc_pipeline_grid_search.py**_ file. This follows the same steps as the Data-driven approach.
-
-#### XGBoost Classifier
-Run the _**_11_domain_integrated_test_best_xgb_pipeline_grid_search.py**_ file. This follows the same steps as the Data-driven approach.
+The same steps were followed as in the Data-driven approach.
 
 #### Best model
-Run the _**_12_best_model_domain_integrated.py**_ file. This follows the same steps as the Data-driven approach.
+The best model is selected as the classifier that resulted in the highest ROC AUC score. In this data-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, using the XGBoost feature importance method, the top 20 features used in classification were identified.
 
 ## Backlog
 - Play around with values for the maximum percentage of NaN value threshold when filtering columns in the master dataframe and investigate whether adding more or less features would improve model performance.
 - Play around with various other transformation pipelines - using different methods of imputation.
 - Change the goal of the project to classifying cardiovascular disease.
+
+## Diagram of Flow of Python files
+![G42-Diabetes-project-github-project-flow-chart](https://user-images.githubusercontent.com/76870222/129685915-170b2bdd-831d-4056-9aea-e63ea9637931.jpg)
+
+1. Run the _**main.py**_ file first. This file will import functions and variables from _**implementation_final.py**_ automatically.
+2. For the Data-driven approach, run the _**_03_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_01_data_driven_prep_for_ML.py**_ and _**_02_data_driven_test_pipelines.py**_ files automatically.
+3. For the Domain-driven approach, run the _**_06_domain_driven_best_model.py**_ file. This file will import functions and variables from the _**_04_domain_driven_prep_for_ML.py**_ and _**_05_domain_driven_test_pipelines.py**_ files automatically.
