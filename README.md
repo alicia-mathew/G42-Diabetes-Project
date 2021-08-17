@@ -80,11 +80,12 @@ The same steps were followed as in the Data-driven approach.
 The best model is selected as the classifier that resulted in the highest ROC AUC score. In this domain-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, using the XGBoost feature importance method, the top 20 features used in classification were identified.
 
 ### Comparing Results to BMB Paper's Results
-The table below shows the ROC AUC score of the BMC paper's best-performing model, the XGBoost Classifier, using lab data (taken from Page 7 in the paper) as well as the ROC AUC score of the best model in the Data-driven approach of this project.
+The table below shows the ROC AUC score of the BMC paper's best-performing model, the XGBoost Classifier, using lab data (taken from Page 7 in the paper) as well as the ROC AUC score of the best models in both approaches of this project.
 
 |                       | ROC AUC score |
 | --------------------- | ------------- |
-| **Project best model**    |    0.944      |
+| **Data-driven best model**    |          |
+| **Domain-driven best model**    |          |
 | **BMC Paper best model**  |    0.957      |
 
 ## Diagram of Flow of Python files
