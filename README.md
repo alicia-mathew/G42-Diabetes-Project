@@ -79,14 +79,15 @@ The same steps were followed as in the Data-driven approach.
 #### Best model
 The best model is selected as the classifier that resulted in the highest ROC AUC score. In this data-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, using the XGBoost feature importance method, the top 20 features used in classification were identified.
 
-## Backlog
-- Play around with values for the maximum percentage of NaN value threshold when filtering columns in the master dataframe and investigate whether adding more or less features would improve model performance.
-- Play around with various other transformation pipelines - using different methods of imputation.
-- Change the goal of the project to classifying cardiovascular disease.
-
 ## Diagram of Flow of Python files
 ![G42-Diabetes-project-github-project-flow-chart](https://user-images.githubusercontent.com/76870222/129685915-170b2bdd-831d-4056-9aea-e63ea9637931.jpg)
 
 1. Run the _**main.py**_ file first. This file will import functions and variables from _**implementation_final.py**_ automatically.
 2. For the Data-driven approach, run the _**_03_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_01_data_driven_prep_for_ML.py**_ and _**_02_data_driven_test_pipelines.py**_ files automatically.
 3. For the Domain-driven approach, run the _**_06_domain_driven_best_model.py**_ file. This file will import functions and variables from the _**_04_domain_driven_prep_for_ML.py**_ and _**_05_domain_driven_test_pipelines.py**_ files automatically.
+
+## Backlog
+- Play around with values for the maximum percentage of NaN value threshold when filtering columns in the master dataframe and investigate whether adding more or less features would improve model performance.
+- Play around with various other transformation pipelines - using different methods of imputation.
+- Perform multiple Grid Searches with RFC and XGB and test different hyperparameter values.
+- Change the goal of the project to classifying cardiovascular disease.
