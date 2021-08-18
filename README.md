@@ -1,4 +1,4 @@
-# Markdown Demo
+# Diabetes Classification Project
 
 ## Introduction
 This project is based on the paper _**'A data-driven approach to predicting diabetes and cardiovascular disease with machine learning'**_, written by BMC Medical Informatics and Decision Making (https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-019-0918-5). The aim of the project was to replicate what the paper did with a focus on classifying and predicting **diabetes**. This includes the entire process of downloading raw data, exploring and understanding it before eventually using it to train models to predict whether a patient is diabetic, prediabetic, or not diabetic.
@@ -33,6 +33,11 @@ The steps followed to create dataframes for each data file were as follows:
 
 This is done by running the _**main.py**_ file one time and saving the dataframes created. (uses _**implementation_final.py**_ to run)
 
+## Experiments
+- With Lab data and Without Lab data: 
+- Two timeframes (1999-2014 and 2003-2014). In the BMC paper, the models were tested on two datasets. First, only patients with data between the years 1999 and 2014 were considered and then, patient with data between the years 2003 and 2014. Thus, the same was done in this project when it came to preparing the dataframes for machine learning.
+
+
 ## Preprocessing Dataframe for Machine Learning using Transformation Pipelines
 Create four machine learning transformation pipelines to test which performs better on dataset. A brief overview is shown below.
 ![github-pipelines-chart](https://user-images.githubusercontent.com/76870222/129478688-0c4e4f19-f7ca-4a06-a4e6-e6c3516cec6c.jpg)
@@ -41,11 +46,21 @@ Create four machine learning transformation pipelines to test which performs bet
 For this first approach, the columns of the master dataframe were filtered even further using a maximum threshold of **0.5** for the percentage of NaN values present in each column. All columns with a percentage of NaN values greater than 0.5 were dropped from the master dataframe. The aim of this approach was to use as little domain knowledge as possible when it came to identifying the most relevant feature columns to keep and which ones to drop. Only columns that were redundant, repetitive, or unnecessary were removed. 
 
 ### Preparing Dataframe for Machine Learning
+In this step, two experiments were done to model what was done in the BMC paper; we looked at two timeframes (1999-2014 and 2003-2014) and the inclusion and exclusion of lab data.
+The experiments were as follows:
+
 1. Clean dataframe, only keep relevant columns.
 2. Sort columns based on whether they contain continuous, categorical, mixed, or object data.
 3. Assign diabetes class labels (not diabetic - 0 | diabetic - 1 | prediabetic - 2)
-4. Restrict dataset to patients from 1999-2014 year brackets (just like the paper did).
+
+- With Lab Data => 1999-2014 and 2003-2014
+4. Restrict dataset to patients from 1999-2014 year brackets (then, patients from 2003-2014 are considered).
 5. Drop columns not considered features to classify diabetes.
+6. Separate predictors, X, and labels, y, which are used to train ML models.
+
+- Without Lab Data => 1999-2014 and 2003-2014
+4. Restrict dataset to patients from 1999-2014 year brackets (then, patients from 2003-2014 are considered).
+5. Drop columns not considered features to classify diabetes as well as columns with lab data.
 6. Separate predictors, X, and labels, y, which are used to train ML models.
 
 ### Machine Learning
@@ -69,7 +84,7 @@ In this approach, the master dataframe was filtered using a maximum threshold of
 2. Perform feature engineering to reduce the number of feature columns in the dataframe by grouping columns under the same category into one combined dummy feature.
 3. Sort columns based on whether they contain continuous, categorical, mixed, or object data.
 4. Assign diabetes class labels (not diabetic - 0 | diabetic - 1 | prediabetic - 2)
-5. Restrict dataset to patients from 1999-2014 year brackets (just like the paper did).
+5. Restrict dataset to patients from 1999-2014 year brackets (later, patients from 2003-2014 are considered).
 6. Drop columns not considered features to classify diabetes.
 7. Separate predictors, X, and labels, y, which are used to train ML models.
 
@@ -80,20 +95,22 @@ The same steps were followed as in the Data-driven approach.
 The best model is selected as the classifier that resulted in the highest ROC AUC score. In this domain-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, using the XGBoost feature importance method, the top 20 features used in classification were identified.
 
 ### Comparing Results to BMC Paper's Results
-The table below shows the ROC AUC score of the BMC paper's best-performing model, the XGBoost Classifier, using lab data (taken from Page 7 in the paper) as well as the ROC AUC score of the best models in both approaches of this project.
+The table below compares the ROC AUC scores of the best performing models in the BMC paper with the best performing ones in the two approaches in this project. Both the data
 
-|                       | ROC AUC score |
-| --------------------- | ------------- |
-| **Data-driven best model**    |          |
-| **Domain-driven best model**    |          |
-| **BMC Paper best model**  |    0.957      |
+
+the ROC AUC score of the BMC paper's best-performing model, the XGBoost Classifier, using lab data (taken from Page 7 in the paper) as well as the ROC AUC score of the best models in both approaches of this project.
 
 ## Diagram of Flow of Python files
 ![G42-Diabetes-project-github-project-flow-chart](https://user-images.githubusercontent.com/76870222/129685915-170b2bdd-831d-4056-9aea-e63ea9637931.jpg)
 
 1. Run the _**main.py**_ file first. This file will import functions and variables from _**implementation_final.py**_ automatically.
-2. For the Data-driven approach, run the _**_03_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_01_data_driven_prep_for_ML.py**_ and _**_02_data_driven_test_pipelines.py**_ files automatically.
-3. For the Domain-driven approach, run the _**_06_domain_driven_best_model.py**_ file. This file will import functions and variables from the _**_04_domain_driven_prep_for_ML.py**_ and _**_05_domain_driven_test_pipelines.py**_ files automatically.
+2. In the **With Lab Data** experiment:
+- For the **Data-driven approach**, run the _**_03_with_lab_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_01_with_lab_data_driven_prep_for_ML.py**_ and _**_02_with_lab_data_driven_test_pipelines.py**_ files automatically.
+- For  the **Domain-driven approach**, run the _**_06_with_lab_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_04_with_lab_data_driven_prep_for_ML.py**_ and _**_05_with_lab_data_driven_test_pipelines.py**_ files automatically.
+3. In the **Without Lab Data** experiment:
+- For the **Data-driven approach**, run the _**_03_without_lab_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_01_without_lab_data_driven_prep_for_ML.py**_ and _**_02_without_lab_data_driven_test_pipelines.py**_ files automatically.
+- For  the **Domain-driven approach**, run the _**_06_without_lab_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_04_without_lab_data_driven_prep_for_ML.py**_ and _**_05_without_lab_data_driven_test_pipelines.py**_ files automatically.
+
 
 ## Backlog
 - Play around with values for the maximum percentage of NaN value threshold when filtering columns in the master dataframe and investigate whether adding more or less features would improve model performance.
