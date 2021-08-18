@@ -33,11 +33,6 @@ The steps followed to create dataframes for each data file were as follows:
 
 This is done by running the _**main.py**_ file one time and saving the dataframes created. (uses _**implementation_final.py**_ to run)
 
-## Experiments
-- With Lab data and Without Lab data: 
-- Two timeframes (1999-2014 and 2003-2014). In the BMC paper, the models were tested on two datasets. First, only patients with data between the years 1999 and 2014 were considered and then, patient with data between the years 2003 and 2014. Thus, the same was done in this project when it came to preparing the dataframes for machine learning.
-
-
 ## Preprocessing Dataframe for Machine Learning using Transformation Pipelines
 Create four machine learning transformation pipelines to test which performs better on dataset. A brief overview is shown below.
 ![github-pipelines-chart](https://user-images.githubusercontent.com/76870222/129478688-0c4e4f19-f7ca-4a06-a4e6-e6c3516cec6c.jpg)
@@ -84,8 +79,15 @@ In this approach, the master dataframe was filtered using a maximum threshold of
 2. Perform feature engineering to reduce the number of feature columns in the dataframe by grouping columns under the same category into one combined dummy feature.
 3. Sort columns based on whether they contain continuous, categorical, mixed, or object data.
 4. Assign diabetes class labels (not diabetic - 0 | diabetic - 1 | prediabetic - 2)
-5. Restrict dataset to patients from 1999-2014 year brackets (later, patients from 2003-2014 are considered).
+
+- With Lab Data => 1999-2014 and 2003-2014
+5. Restrict dataset to patients from 1999-2014 year brackets (then, patients from 2003-2014 are considered).
 6. Drop columns not considered features to classify diabetes.
+7. Separate predictors, X, and labels, y, which are used to train ML models.
+
+- Without Lab Data => 1999-2014 and 2003-2014
+5. Restrict dataset to patients from 1999-2014 year brackets (then, patients from 2003-2014 are considered).
+6. Drop columns not considered features to classify diabetes as well as columns with lab data.
 7. Separate predictors, X, and labels, y, which are used to train ML models.
 
 ### Machine Learning
@@ -95,10 +97,7 @@ The same steps were followed as in the Data-driven approach.
 The best model is selected as the classifier that resulted in the highest ROC AUC score. In this domain-driven approach, it is the XGB Classifier after conducting grid search with a parameter grid. Then, using the XGBoost feature importance method, the top 20 features used in classification were identified.
 
 ### Comparing Results to BMC Paper's Results
-The table below compares the ROC AUC scores of the best performing models in the BMC paper with the best performing ones in the two approaches in this project. Both the data
-
-
-the ROC AUC score of the BMC paper's best-performing model, the XGBoost Classifier, using lab data (taken from Page 7 in the paper) as well as the ROC AUC score of the best models in both approaches of this project.
+The table below compares the ROC AUC scores of the best performing models in the BMC paper with the best performing ones in the two approaches in this project. 
 
 ## Diagram of Flow of Python files
 ![G42-Diabetes-project-github-project-flow-chart](https://user-images.githubusercontent.com/76870222/129685915-170b2bdd-831d-4056-9aea-e63ea9637931.jpg)
