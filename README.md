@@ -100,7 +100,7 @@ The best model is selected as the classifier that resulted in the highest ROC AU
 The table below compares the ROC AUC scores of the best performing models in the BMC paper with the best performing ones in the two approaches in this project. 
 
 ## Diagram of Flow of Python files
-![G42-Diabetes-project-github-project-flow-chart](https://user-images.githubusercontent.com/76870222/129685915-170b2bdd-831d-4056-9aea-e63ea9637931.jpg)
+![G42-Diabetes-project-github-project-flow-chart](https://user-images.githubusercontent.com/76870222/129860407-7953bd0e-2927-417c-ae0b-697a605d8a06.jpg)
 
 1. Run the _**main.py**_ file first. This file will import functions and variables from _**implementation_final.py**_ automatically.
 2. In the **With Lab Data** experiment:
