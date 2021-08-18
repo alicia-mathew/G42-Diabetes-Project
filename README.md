@@ -105,10 +105,10 @@ The table below compares the ROC AUC scores of the best performing models in the
 1. Run the _**main.py**_ file first. This file will import functions and variables from _**implementation_final.py**_ automatically.
 2. In the **With Lab Data** experiment:
 - For the **Data-driven approach**, run the _**_03_with_lab_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_01_with_lab_data_driven_prep_for_ML.py**_ and _**_02_with_lab_data_driven_test_pipelines.py**_ files automatically.
-- For  the **Domain-driven approach**, run the _**_06_with_lab_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_04_with_lab_data_driven_prep_for_ML.py**_ and _**_05_with_lab_data_driven_test_pipelines.py**_ files automatically.
+- For  the **Domain-driven approach**, run the _**_06_with_lab_domain_driven_best_model.py**_ file. This file will import functions and variables from the _**_04_with_lab_domain_driven_prep_for_ML.py**_ and _**_05_with_lab_domain_driven_test_pipelines.py**_ files automatically.
 3. In the **Without Lab Data** experiment:
 - For the **Data-driven approach**, run the _**_03_without_lab_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_01_without_lab_data_driven_prep_for_ML.py**_ and _**_02_without_lab_data_driven_test_pipelines.py**_ files automatically.
-- For  the **Domain-driven approach**, run the _**_06_without_lab_data_driven_best_model.py**_ file. This file will import functions and variables from the _**_04_without_lab_data_driven_prep_for_ML.py**_ and _**_05_without_lab_data_driven_test_pipelines.py**_ files automatically.
+- For  the **Domain-driven approach**, run the _**_06_without_lab_domain_driven_best_model.py**_ file. This file will import functions and variables from the _**_04_without_lab_domain_driven_prep_for_ML.py**_ and _**_05_without_lab_domain_driven_test_pipelines.py**_ files automatically.
 
 
 ## Backlog
