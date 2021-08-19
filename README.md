@@ -99,7 +99,7 @@ The best model is selected as the classifier that resulted in the highest ROC AU
 ### Comparing Results to BMC Paper's Results
 The table below compares the ROC AUC scores of the best performing models in the BMC paper with the best performing ones in the two approaches in this project. 
 
-**ADD TABLE HERE**
+![image](https://user-images.githubusercontent.com/76870222/130020627-f2816390-c9c4-48bd-abe1-db72a17f0668.png)
 
 ## Diagram of Flow of Python files
 ![G42-Diabetes-project-github-project-flow-chart](https://user-images.githubusercontent.com/76870222/129860407-7953bd0e-2927-417c-ae0b-697a605d8a06.jpg)
