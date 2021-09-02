@@ -62,7 +62,7 @@ The experiments were as follows:
 Two machine learning classifiers were used in this project - **Random Forest Classifier** (RFC) and **XGBoost** (Extreme Gradient Boosting) **Classifier** (XGB). For each classifer, the following was done:
 
 1. Use each transformation pipeline above to fit and transform X. 
-2. Fit a baseline classifier to the tranformed X and y.
+2. Fit a baseline classifier to the transformed X and y.
 3. Evaluate using 5-fold cross validation.
 4. Calculate and compare mean cross validation scores and ROC AUC scores.
 5. The pipeline which results in the highest ROC AUC score is stored as the best transformation pipeline for that classfier and will be used in grid search.
